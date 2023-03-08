@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 18:26:16 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/08 18:27:14 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/03/08 22:08:10 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,36 @@ int	give_small(t_list **b)
 		last = last->next;
 	}
 	return (small);
+}
+
+int	find_bigg_in_a(t_list **root, int n_moviments)
+{
+	t_list	*temp;
+	int		biggest;
+
+	temp = (*root);
+	biggest = temp->x;
+	while (--n_moviments > 0)
+	{
+		if (biggest < temp->next->x)
+			biggest = temp->next->x;
+		temp = temp->next;
+	}
+	return (biggest);
+}
+
+int	find_smll(t_list **root)
+{
+	t_list	*temp;
+	int		smallest;
+
+	temp = *root;
+	smallest = 0;
+	while (temp->next != NULL)
+	{
+		if (temp->x > temp->next->x)
+			smallest = temp->next->x;
+		temp = temp->next;
+	}
+	return (smallest);
 }

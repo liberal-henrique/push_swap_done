@@ -6,13 +6,13 @@
 #    By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/25 15:28:14 by lliberal          #+#    #+#              #
-#    Updated: 2023/03/08 18:35:54 by lliberal         ###   ########.fr        #
+#    Updated: 2023/03/08 21:50:20 by lliberal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC		=	gcc
-CFLAGS	=	-fsanitize=address
-# CFLAGS	=	-Wall -Wextra -Werror
+# CFLAGS	=	-fsanitize=address
+CFLAGS	=	-Wall -Wextra -Werror
 RM		=	rm -f
 NAME	=	push_swap
 INCLUDE	=	push_swap.h

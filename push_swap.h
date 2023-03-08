@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 16:10:04 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/08 18:28:51 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/03/08 22:08:59 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ void				send_bot_b(t_list **a, t_list **b);
 //------------------Sort------------------//
 //Sort_big
 int					n_midpoint(t_list **b, int midpoint, int end);
-void				rest(t_list **a, t_list **b, int i);
 void				send_rest(t_list **a, t_list **b);
 void				sort_biggest(t_list **a, t_list **b);
 
@@ -131,8 +130,10 @@ char				*ft_strjoin(char const *s1, char const *s2);
 int					ft_atoi(const char *str);
 int					gv_i_mid(t_list **a);
 t_list				*clone_list(t_list **head);
-
+//-----------------util3--------------//
 int					give_big(t_list **b);
 int					give_small(t_list **b);
+int					find_bigg_in_a(t_list **root, int n_moviments);
+int					find_smll(t_list **root);
 
 #endif

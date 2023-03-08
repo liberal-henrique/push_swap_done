@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:04:57 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/08 18:28:07 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/03/08 22:01:30 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,35 +33,20 @@ int	n_midpoint(t_list **b, int midpoint, int end)
 	return (i);
 }
 
-void	rest(t_list **a, t_list **b, int i)
-{
-	int	n;
-
-	n = 0;
-	sort_a(a, b, i);
-	n = cnt_rec(*b);
-	while (cnt_rec(*b) > 0)
-		pa(a, b);
-	sort_a(a, b, n);
-}
-
 void	send_rest(t_list **a, t_list **b)
 {
-	t_list	*last;
+	int		n_mov;
 	int		md_pnt;
-	int		small;
 	int		big;
 	int		i;
 
-	last = *b;
-	small = give_small(b);
-	big = give_big(b);
 	i = 0;
-	md_pnt = md_chunk(b, small, big);
-	small = n_midpoint(b, md_pnt, big);
-	while (small != 0)
+	big = give_big(b);
+	md_pnt = md_chunk(b, md_chunk(b, give_small(b), big), big);
+	n_mov = n_midpoint(b, md_pnt, big);
+	while (n_mov != 0)
 	{
-		if ((*b)->x >= md_pnt && ++i && small--)
+		if ((*b)->x >= md_pnt && ++i && n_mov--)
 		{
 			pa(a, b);
 			if (cnt_rec(*a) > 1 && (*a)->x > (*a)->next->x && (*a)->x != big)
@@ -70,7 +55,9 @@ void	send_rest(t_list **a, t_list **b)
 		else if ((*b)->x < md_pnt)
 			rb(b);
 	}
-	rest(a, b, i);
+	sort_a(a, b, i);
+	if (cnt_rec(*b) > 0)
+		send_rest(a, b);
 }
 
 void	sort_biggest(t_list **a, t_list **b)

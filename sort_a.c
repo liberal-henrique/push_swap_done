@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 15:56:46 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/08 16:03:32 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/03/08 22:08:00 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,36 +42,14 @@ void	back_pb(t_list **a, t_list **b, int n_control)
 	}
 }
 
-int	find_bigg_in_a(t_list **root, int n_moviments)
+void	part_sort_a(t_list **a, t_list **b, int ra_control, int pb_control)
 {
-	t_list	*temp;
-	int		biggest;
-
-	temp = (*root);
-	biggest = temp->x;
-	while (--n_moviments > 0)
-	{
-		if (biggest < temp->next->x)
-			biggest = temp->next->x;
-		temp = temp->next;
-	}
-	return (biggest);
-}
-
-int	find_smll(t_list **root)
-{
-	t_list	*temp;
-	int		smallest;
-
-	temp = *root;
-	smallest = 0;
-	while (temp->next != NULL)
-	{
-		if (temp->x > temp->next->x)
-			smallest = temp->next->x;
-		temp = temp->next;
-	}
-	return (smallest);
+	back_ra(a, ra_control);
+	if (!(list_sorted(a)))
+		sort_a(a, b, ra_control);
+	back_pb(a, b, pb_control);
+	if (!(list_sorted(a)))
+		sort_a(a, b, pb_control);
 }
 
 void	sort_a(t_list **a, t_list **b, int n_moviments)
@@ -87,15 +65,18 @@ void	sort_a(t_list **a, t_list **b, int n_moviments)
 	mid_pnt = md_chunk(a, find_smll(a), find_bigg_in_a(a, n_moviments));
 	while (n_moviments-- > 0)
 	{
-		if ((*a)->x >= mid_pnt && !list_sorted(a) && ++ra_control)
+		if ((*a)->x >= mid_pnt && !list_sorted(a))
+		{
 			ra(a);
-		else if ((*a)->x < mid_pnt && ++pb_control)
+			ra_control++;
+			if (list_sorted(a))
+				ra_control--;
+		}
+		else if ((*a)->x < mid_pnt)
+		{
 			pb(b, a);
+			pb_control++;
+		}
 	}
-	back_ra(a, ra_control);
-	if (!(list_sorted(a)))
-		sort_a(a, b, ra_control);
-	back_pb(a, b, pb_control);
-	if (!(list_sorted(a)))
-		sort_a(a, b, pb_control);
+	part_sort_a(a, b, ra_control, pb_control);
 }

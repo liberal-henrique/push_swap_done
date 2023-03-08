@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 15:41:33 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/08 18:35:11 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/03/08 21:47:27 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ void	part_send_top(t_list **a, t_list **b, t_list *last, int n)
 	while ((*b)->x > last->x)
 	{
 		pa(a, b);
+		if (cnt_rec(*a) > 1 && (*a)->x > (*a)->next->x)
+			sa(a);
 		i++;
 	}
 	i = i + n;
@@ -73,6 +75,8 @@ void	part_send_top(t_list **a, t_list **b, t_list *last, int n)
 	{
 		rrb(b);
 		pa(a, b);
+		if (cnt_rec(*a) > 1 && (*a)->x > (*a)->next->x)
+			sa(a);
 	}
 	sort_a(a, b, i);
 }
