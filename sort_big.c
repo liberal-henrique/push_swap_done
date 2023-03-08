@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:04:57 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/08 22:01:30 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/03/08 22:12:50 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,15 @@ int	n_midpoint(t_list **b, int midpoint, int end)
 	t_list	*clone;
 	int		i;
 
+	if (midpoint == end)
+		return (1);
 	clone = clone_list(b);
 	temp = clone;
 	sort_list(&temp);
 	i = 1;
-	while (temp->next != NULL && temp->x != midpoint)
+	while (temp->x != midpoint)
 		temp = temp->next;
-	while (temp->next != NULL && temp->x != end)
+	while (temp->x != end)
 	{
 		i++;
 		temp = temp->next;
