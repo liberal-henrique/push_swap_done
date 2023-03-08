@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 15:56:46 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/08 22:10:23 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/03/08 23:49:29 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	back_pb(t_list **a, t_list **b, int n_control)
 	while (n_control-- != 0)
 	{
 		i = (*b)->x;
-		if (i > (*a)->x)
+		if (i > (*a)->x && cnt_rec(*a) > 0)
 		{
 			pa(a, b);
 			sa(a);

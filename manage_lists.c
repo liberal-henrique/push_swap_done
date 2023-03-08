@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:30:33 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/08 16:36:35 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/03/08 23:32:42 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ int	list_sorted(t_list **root)
 {
 	t_list	*curr;
 
+	if (!root)
+		return (0);
 	curr = *root;
 	while (curr->next)
 	{

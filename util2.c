@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:24:11 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/08 16:39:49 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/03/08 23:38:22 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	j = -1;
 	length = (ft_strlen(s1) + ft_strlen(s2));
 	dest = malloc(sizeof(char) * length + 1);
-	if (dest == 0)
-		return (0);
+	if (!dest)
+		return (NULL);
 	while (s1[++i] != '\0')
 		dest[i] = s1[i];
 	while (s2[++j] != '\0')
@@ -97,6 +97,8 @@ t_list	*clone_list(t_list **head)
 	while (current != NULL)
 	{
 		new_node = malloc(sizeof(t_list));
+		if (!new_node)
+			return (NULL);
 		new_node->x = current->x;
 		new_node->next = NULL;
 		if (prev != NULL)

@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 17:55:36 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/08 18:11:48 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/03/08 23:45:57 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	a = initialize_list(argv + 1, a);
+	if (!a)
+		return (0);
 	if (list_sorted(&a) == 1 && count_items(a) >= 1)
 		deallocate(&a, 0);
 	else if (cnt_rec(a) == 2)

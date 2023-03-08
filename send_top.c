@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 15:41:33 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/08 21:47:27 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/03/08 22:46:50 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,11 @@ void	send_top_b(t_list **a, t_list **b)
 	r = n_midpoint(b, md_pnt, top_big(*b));
 	while (r != 0)
 	{
-		if ((*b)->x >= md_pnt && ++i && r--)
+		if ((*b)->x >= md_pnt && ++i)
+		{
 			pa(a, b);
+			r--;
+		}
 		else if ((*b)->x < md_pnt && ++n)
 			rb(b);
 	}

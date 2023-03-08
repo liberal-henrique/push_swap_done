@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 16:10:04 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/08 22:09:35 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/03/08 23:51:53 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void				rrr(t_list **a, t_list **b);
 //Send_top
 int					top_big(t_list *b);
 int					top_small(t_list *b);
+void				part_send_top(t_list **a, t_list **b, t_list *last, int n);
 void				send_top_b(t_list **a, t_list **b);
 
 //Send_bot
