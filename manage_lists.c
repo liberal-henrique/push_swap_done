@@ -6,11 +6,47 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:30:33 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/08 23:32:42 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/03/11 18:22:39 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	printList(t_list *root)
+{
+	t_list	*curr;
+
+	curr = root;
+	while (curr != NULL)
+	{
+		if (curr->next == NULL)
+		{
+			printf("[*][%ld]", (long int)curr->x);
+			break ;
+		}
+		printf("[*][%ld]->", (long int)curr->x);
+		curr = curr->next;
+	}
+}
+
+int	ft_isnum_compare(const char *str)
+{
+	int	i;
+	int	flag;
+
+	i = -1;
+	flag = 1;
+	while (str[++i])
+	{
+		if (str[i] == '-' || str[i] == '+')
+			i++;
+		if (!(str[i] <= '9' && str[i] >= '0'))
+			flag = 0;
+	}
+	// if (ft_strncmp("-2147483648", str, 11) != 1)
+	// 	flag = 0;
+	return (flag);
+}
 
 long int	ft_atoi_check_numbers(const char *str, t_list *a)
 {
@@ -22,21 +58,58 @@ long int	ft_atoi_check_numbers(const char *str, t_list *a)
 	i = 0;
 	sign = 1;
 	res = 0;
-	flag = ft_isnum_compare(str, a);
+	flag = ft_isnum_compare(str);
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
 			sign *= -1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	while (str[i] >= '0' && str[i] <= '9' && str[i])
 	{
 		res = res * 10 + str[i] - '0';
-		if (res >= 2147483648 && flag != 1)
-			deallocate(&a, 1);
 		i++;
 	}
+	if ((res >= 2147483648 && sign == -1) || flag != 1)
+	{
+		deallocate(&a, 1);
+		exit (1);
+	}
 	return (res * sign);
+}
+
+t_list	*initialize_list(char **argv, t_list *a)
+{
+	int		i;
+	int		j;
+	int		flag;
+	int		value;
+	t_list	*new_node;
+
+	i = -1;
+	value = 0;
+	new_node = NULL;
+	(void)a;
+	while (argv[++i])
+	{
+		j = 0;
+		flag = 0;
+		while (argv[i][j++])
+		{
+			if ((argv[i][j] >= 9 && argv[i][j] <= 13) || argv[i][j] == 32)
+			{
+				flag = 1;
+				new_node = ft_split_create_str(new_node, argv[i], argv[i][j]);
+				break ;
+			}
+		}
+		if (flag == 0)
+		{
+			value =  ft_atoi_check_numbers(argv[i], new_node);
+			insert_end(&new_node, value);
+		}
+	}
+	return (new_node);
 }
 
 void	sort_list(t_list **a)
@@ -88,32 +161,4 @@ int	cnt_rec(t_list *node)
 	if (node == NULL)
 		return (0);
 	return (1 + cnt_rec(node->next));
-}
-
-t_list	*initialize_list(char **argv, t_list *a)
-{
-	int		i;
-	int		j;
-	int		flag;
-	t_list	*new_node;
-
-	i = -1;
-	new_node = NULL;
-	while (argv[++i])
-	{
-		j = 0;
-		flag = 0;
-		while (argv[i][j++])
-		{
-			if ((argv[i][j] >= 9 && argv[i][j] <= 13) || argv[i][j] == 32)
-			{
-				flag = 1;
-				new_node = ft_split_create_str(new_node, argv[i], argv[i][j]);
-				break ;
-			}
-		}
-		if (flag == 0)
-			insert_end(&new_node, ft_atoi_check_numbers(argv[i], a));
-	}
-	return (new_node);
 }

@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 15:36:29 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/08 17:51:43 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/03/11 18:26:20 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,18 @@ void	insert_end(t_list **root, int value)
 	while (curr->next != NULL)
 	{
 		if (curr->x == value)
-			exit (write(1, "Error\n", 6));
+		{
+			free(new_node);
+			deallocate(root, 1);
+			printf("here\n");
+		}
 		curr = curr->next;
+	}
+	if (curr->x == value)
+	{
+		free(new_node);
+		deallocate(root, 1);
+		printf("here\n");
 	}
 	curr->next = new_node;
 }

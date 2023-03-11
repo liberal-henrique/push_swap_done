@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 16:32:07 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/08 16:36:37 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/03/11 18:23:06 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,33 +58,40 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return (1);
 }
 
-int	ft_isnum_compare(const char *str, t_list *a)
-{
-	int	i;
+// int	ft_isnum_compare(const char *str, t_list *a)
+// {
+// 	int	i;
 
-	i = -1;
-	while (str[++i])
-	{
-		if (str[i] == '-' || str[i] == '+')
-			i++;
-		if ((str[i] > '9' || str[i] < '0'))
-			deallocate(&a, 1);
-	}
-	if (ft_strncmp("-2147483648", str, 11) == 1)
-		return (1);
-	return (0);
-}
+// 	i = -1;
+// 	printf("Is numcompare: %s\n", str);
+// 	while (str[++i])
+// 	{
+// 		if (str[i] == '-' || str[i] == '+')
+// 			i++;
+// 		if ((str[i] > '9' || str[i] < '0'))
+// 			deallocate(&a, 1);
+// 	}
+// 	if (ft_strncmp("-2147483648", str, 11) == 1)
+// 		return (1);
+// 	return (0);
+// }
 
 void	deallocate(t_list **root, int message)
 {
 	t_list	*temp;
+	t_list	*temp1;
 
-	while (*root)
+	temp1 = *root;
+	while (temp1)
 	{
-		temp = (*root)->next;
-		free(*root);
-		*root = temp;
+		temp = temp1;
+		temp1 = temp1->next;
+		free(temp);
+		*root = temp1;
 	}
 	if (message == 1)
-		exit (write(1, "Error\n", 6));
+	{
+		write(1, "Error\n", 6);
+		exit (1);
+	}
 }

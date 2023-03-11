@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 16:10:04 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/08 23:51:53 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/03/11 17:24:43 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void				best_move(t_list **a, t_list **b, int start, int end);
 int					count_items(t_list	*root);
 void				free_all(char **result);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
-int					ft_isnum_compare(const char *str, t_list *a);
+int					ft_isnum_compare(const char *str);
 void				deallocate(t_list **root, int message);
 //Insert_list
 void				insert_end(t_list **root, int value);
