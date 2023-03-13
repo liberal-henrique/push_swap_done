@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 16:10:04 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/11 17:24:43 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/03/13 12:21:52 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,12 @@ void				back_pb(t_list **a, t_list **b, int n_control);
 int					find_bigg_in_a(t_list **root, int n_moviments);
 int					find_smll(t_list **root);
 void				sort_a(t_list **a, t_list **b, int n_moviments);
+
+//-------Split-------//
+int					ft_isnum_compare_split(char **str);
+long int			ft_atoi_check_numbers_split(const char *str, t_list *a);
+void				insert_end_split(t_list **root, int value);
+t_list				*ft_split_create_str(t_list *a, char *argv, char delimiter);
 
 //-------Split-------//
 char				write_word(char *dest, const char *from, char set);

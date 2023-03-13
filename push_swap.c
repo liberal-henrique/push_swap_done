@@ -6,7 +6,7 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 17:55:36 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/11 16:58:30 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/03/13 14:03:00 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@ int	main(int argc, char **argv)
 	t_list	*a;
 	t_list	*b;
 
-	a = NULL;
 	b = NULL;
 	if (argc < 2)
 		return (0);
-	a = initialize_list(argv + 1, a);
+	a = initialize_list((argv + 1), NULL);
 	if (!a)
 		return (0);
 	if (list_sorted(&a) == 1 && count_items(a) >= 1)

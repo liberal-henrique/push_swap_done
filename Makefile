@@ -6,7 +6,7 @@
 #    By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/25 15:28:14 by lliberal          #+#    #+#              #
-#    Updated: 2023/03/11 17:01:09 by lliberal         ###   ########.fr        #
+#    Updated: 2023/03/13 14:14:20 by lliberal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,6 @@ SRCS	=	push_swap.c \
 			sort_big.c \
 			sort_utils.c \
 			sort_small.c \
-			split.c \
 			swap.c \
 			util.c \
 			util2.c \

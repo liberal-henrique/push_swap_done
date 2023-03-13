@@ -6,46 +6,26 @@
 /*   By: lliberal <lliberal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 15:36:29 by lliberal          #+#    #+#             */
-/*   Updated: 2023/03/11 18:26:20 by lliberal         ###   ########.fr       */
+/*   Updated: 2023/03/13 14:10:09 by lliberal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	insert_end(t_list **root, int value)
+int	list_sorted(t_list **root)
 {
-	t_list	*new_node;
 	t_list	*curr;
 
+	if (!root)
+		return (0);
 	curr = *root;
-	new_node = malloc(sizeof(t_list));
-	if (!new_node)
-		return ;
-	new_node->next = NULL;
-	new_node->x = value;
-	if (*root == NULL)
+	while (curr->next)
 	{
-		*root = new_node;
-		return ;
-	}
-	curr = *root;
-	while (curr->next != NULL)
-	{
-		if (curr->x == value)
-		{
-			free(new_node);
-			deallocate(root, 1);
-			printf("here\n");
-		}
+		if (curr->x > curr->next->x)
+			return (0);
 		curr = curr->next;
 	}
-	if (curr->x == value)
-	{
-		free(new_node);
-		deallocate(root, 1);
-		printf("here\n");
-	}
-	curr->next = new_node;
+	return (1);
 }
 
 void	rr(t_list **a, t_list **b)
